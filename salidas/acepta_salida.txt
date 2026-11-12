@@ -1,0 +1,71 @@
+M = (Q, Sigma, Gamma, delta, q0, qaccept, qreject)
+Q = {q1, q2, q3, q4, q5, q6, qaccept, qreject}
+Sigma = {0, 1}
+Gamma = {0, 1, X, Y, _}
+Blanco = _
+q0 = q1
+qaccept = qaccept
+qreject = qreject
+delta:
+    delta(q1, 0) = (q2, X, R)
+    delta(q1, Y) = (q4, Y, R)
+    delta(q1, 1) = (q5, 1, R)
+    delta(q1, X) = (qreject, X, R)
+    delta(q1, _) = (qreject, _, R)
+    delta(q2, 0) = (q2, 0, R)
+    delta(q2, Y) = (q2, Y, R)
+    delta(q2, 1) = (q3, Y, L)
+    delta(q2, X) = (qreject, X, R)
+    delta(q2, _) = (qreject, _, R)
+    delta(q3, 0) = (q3, 0, L)
+    delta(q3, Y) = (q3, Y, L)
+    delta(q3, X) = (q1, X, R)
+    delta(q3, 1) = (qreject, 1, R)
+    delta(q3, _) = (qreject, _, R)
+    delta(q4, Y) = (q4, Y, R)
+    delta(q4, _) = (qaccept, _, R)
+    delta(q4, 0) = (qreject, 0, R)
+    delta(q4, 1) = (qreject, 1, R)
+    delta(q4, X) = (qreject, X, R)
+    delta(q5, 0) = (q6, 0, L)
+    delta(q5, 1) = (q6, 1, L)
+    delta(q5, X) = (q6, X, L)
+    delta(q5, Y) = (q6, Y, L)
+    delta(q5, _) = (q6, _, L)
+    delta(q6, 0) = (q5, 0, R)
+    delta(q6, 1) = (q5, 1, R)
+    delta(q6, X) = (q5, X, R)
+    delta(q6, Y) = (q5, Y, R)
+    delta(q6, _) = (q5, _, R)
+
+Cadena de entrada: w = 000111
+
+Configuraciones:
+C1 = q1000111
+C2 = Xq200111
+C3 = X0q20111
+C4 = X00q2111
+C5 = X0q30Y11
+C6 = Xq300Y11
+C7 = q3X00Y11
+C8 = Xq100Y11
+C9 = XXq20Y11
+C10 = XX0q2Y11
+C11 = XX0Yq211
+C12 = XX0q3YY1
+C13 = XXq30YY1
+C14 = Xq3X0YY1
+C15 = XXq10YY1
+C16 = XXXq2YY1
+C17 = XXXYq2Y1
+C18 = XXXYYq21
+C19 = XXXYq3YY
+C20 = XXXq3YYY
+C21 = XXq3XYYY
+C22 = XXXq1YYY
+C23 = XXXYq4YY
+C24 = XXXYYq4Y
+C25 = XXXYYYq4_
+C26 = XXXYYY_qaccept_
+
+Resultado: C26 es una configuracion de aceptacion. M acepta w.

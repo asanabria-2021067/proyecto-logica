@@ -1,0 +1,52 @@
+M = (Q, Sigma, Gamma, delta, q0, qaccept, qreject)
+Q = {q1, q2, q3, q4, q5, qaccept, qreject}
+Sigma = {0}
+Gamma = {0, x, _}
+Blanco = _
+q0 = q1
+qaccept = qaccept
+qreject = qreject
+delta:
+    delta(q1, 0) = (q2, _, R)
+    delta(q1, _) = (qreject, _, R)
+    delta(q1, x) = (qreject, x, R)
+    delta(q2, x) = (q2, x, R)
+    delta(q2, _) = (qaccept, _, R)
+    delta(q2, 0) = (q3, x, R)
+    delta(q3, x) = (q3, x, R)
+    delta(q3, 0) = (q4, 0, R)
+    delta(q3, _) = (q5, _, L)
+    delta(q4, x) = (q4, x, R)
+    delta(q4, 0) = (q3, x, R)
+    delta(q4, _) = (qreject, _, R)
+    delta(q5, 0) = (q5, 0, L)
+    delta(q5, x) = (q5, x, L)
+    delta(q5, _) = (q2, _, R)
+
+Cadena de entrada: w = 0000
+
+Configuraciones:
+C1 = q10000
+C2 = _q2000
+C3 = _xq300
+C4 = _x0q40
+C5 = _x0xq3_
+C6 = _x0q5x_
+C7 = _xq50x_
+C8 = _q5x0x_
+C9 = q5_x0x_
+C10 = _q2x0x_
+C11 = _xq20x_
+C12 = _xxq3x_
+C13 = _xxxq3_
+C14 = _xxq5x_
+C15 = _xq5xx_
+C16 = _q5xxx_
+C17 = q5_xxx_
+C18 = _q2xxx_
+C19 = _xq2xx_
+C20 = _xxq2x_
+C21 = _xxxq2_
+C22 = _xxx_qaccept_
+
+Resultado: C22 es una configuracion de aceptacion. M acepta w.

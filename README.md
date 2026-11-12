@@ -127,6 +127,27 @@ Al inicio del archivo se repite la especificación de la máquina y la cadena de
 | `entradas/rechaza.txt` | 00101 | rechaza en C15 |
 | `entradas/ciclo.txt` | 10 | ciclo infinito (se cortó en 50 pasos) |
 
+## Gráficas y demostraciones
+
+`graficas.py` genera, en la carpeta `graficas/`, las gráficas que se usan en el documento, y muestra las tablas en consola. Necesita matplotlib (`pip install matplotlib`). No es parte del simulador; solo lo usa para analizar la máquina.
+
+```
+python graficas.py
+```
+
+- `cabeza_y_estados.png`: posición de la cabeza y estado en cada configuración para las tres cadenas.
+- `cinta_acepta.png` y `cinta_rechaza.png`: la cinta completa en cada configuración.
+- `pasos_vs_n.png`: configuraciones hasta aceptar 0ⁿ1ⁿ, que son exactamente 2n² + 2n + 2.
+- `clasificacion.png`: todas las cadenas de largo 0 a 8 clasificadas en acepta, rechaza o cicla.
+
+## Pruebas del validador
+
+La carpeta `pruebas/` tiene archivos con un error a propósito cada uno (máquina no determinista, transición faltante, dirección inválida, blanco en Σ, etc.). Por ejemplo:
+
+```
+python main.py pruebas/no_determinista.txt
+```
+
 ## Archivos
 
 - `main.py`: punto de entrada; ejecuta la máquina y escribe las configuraciones.
@@ -135,4 +156,6 @@ Al inicio del archivo se repite la especificación de la máquina y la cadena de
 - `maquina.py`: la función δ y el paso de una configuración a la siguiente.
 - `entradas/`: archivos de entrada.
 - `salidas/`: configuraciones generadas.
+- `graficas.py`: genera las gráficas de la carpeta `graficas/`.
+- `pruebas/`: archivos con errores para probar el validador.
 - `diagramas/`: diagrama de estados de la máquina del inciso b (`.png` y `.excalidraw`, se abre en excalidraw.com).

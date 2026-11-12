@@ -1,0 +1,49 @@
+# PRUEBA CON ERROR A PROPOSITO
+# Maquina del inciso b)
+# Acepta L = {0^n 1^n | n >= 1}
+# Rechaza las cadenas que empiezan con 0 y no son de la forma 0^n 1^n
+# Cicla para siempre con las cadenas que empiezan con 1 (q5 y q6 rebotan sin parar)
+Q = {q1, q2, q3, q4, q5, q6, qaccept, qreject}
+Sigma = {0, 1}
+Gamma = {0, 1, X, Y, ⊔}
+Blanco = ⊔
+q0 = q1
+qaccept = qaccept
+qreject = qreject
+delta:
+# q1: marca el 0 mas a la izquierda, o revisa que ya no queden 0
+(q1, 0) = (q2, X, R)
+(q1, Y) = (q4, Y, R)
+(q1, 1) = (q5, 1, R)
+(q1, X) = (qreject, X, R)
+(q1, ⊔) = (qreject, ⊔, R)
+# q2: busca a la derecha el primer 1 y lo marca con Y
+(q2, 0) = (q2, 0, R)
+(q2, Y) = (q2, Y, R)
+(q2, 1) = (q3, Y, L)
+(q2, X) = (qreject, X, R)
+(q2, ⊔) = (qreject, ⊔, R)
+# q3: regresa a la izquierda hasta la ultima X
+(q3, 0) = (q3, 0, S)
+(q3, Y) = (q3, Y, L)
+(q3, X) = (q1, X, R)
+(q3, 1) = (qreject, 1, R)
+(q3, ⊔) = (qreject, ⊔, R)
+# q4: ya no hay 0, revisa que solo queden Y hasta el blanco
+(q4, Y) = (q4, Y, R)
+(q4, ⊔) = (qaccept, ⊔, R)
+(q4, 0) = (qreject, 0, R)
+(q4, 1) = (qreject, 1, R)
+(q4, X) = (qreject, X, R)
+# q5 y q6: ciclo infinito, la cabeza va a la izquierda y a la derecha sin parar
+(q5, 0) = (q6, 0, L)
+(q5, 1) = (q6, 1, L)
+(q5, X) = (q6, X, L)
+(q5, Y) = (q6, Y, L)
+(q5, ⊔) = (q6, ⊔, L)
+(q6, 0) = (q5, 0, R)
+(q6, 1) = (q5, 1, R)
+(q6, X) = (q5, X, R)
+(q6, Y) = (q5, Y, R)
+(q6, ⊔) = (q5, ⊔, R)
+w = 000111

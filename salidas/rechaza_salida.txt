@@ -1,8 +1,8 @@
 M = (Q, Sigma, Gamma, delta, q0, qaccept, qreject)
 Q = {q1, q2, q3, q4, q5, q6, qaccept, qreject}
 Sigma = {0, 1}
-Gamma = {0, 1, X, Y, _}
-Blanco = _
+Gamma = {0, 1, X, Y, ⊔}
+Blanco = ⊔
 q0 = q1
 qaccept = qaccept
 qreject = qreject
@@ -11,19 +11,19 @@ delta:
     delta(q1, Y) = (q4, Y, R)
     delta(q1, 1) = (q5, 1, R)
     delta(q1, X) = (qreject, X, R)
-    delta(q1, _) = (qreject, _, R)
+    delta(q1, ⊔) = (qreject, ⊔, R)
     delta(q2, 0) = (q2, 0, R)
     delta(q2, Y) = (q2, Y, R)
     delta(q2, 1) = (q3, Y, L)
     delta(q2, X) = (qreject, X, R)
-    delta(q2, _) = (qreject, _, R)
+    delta(q2, ⊔) = (qreject, ⊔, R)
     delta(q3, 0) = (q3, 0, L)
     delta(q3, Y) = (q3, Y, L)
     delta(q3, X) = (q1, X, R)
     delta(q3, 1) = (qreject, 1, R)
-    delta(q3, _) = (qreject, _, R)
+    delta(q3, ⊔) = (qreject, ⊔, R)
     delta(q4, Y) = (q4, Y, R)
-    delta(q4, _) = (qaccept, _, R)
+    delta(q4, ⊔) = (qaccept, ⊔, R)
     delta(q4, 0) = (qreject, 0, R)
     delta(q4, 1) = (qreject, 1, R)
     delta(q4, X) = (qreject, X, R)
@@ -31,12 +31,12 @@ delta:
     delta(q5, 1) = (q6, 1, L)
     delta(q5, X) = (q6, X, L)
     delta(q5, Y) = (q6, Y, L)
-    delta(q5, _) = (q6, _, L)
+    delta(q5, ⊔) = (q6, ⊔, L)
     delta(q6, 0) = (q5, 0, R)
     delta(q6, 1) = (q5, 1, R)
     delta(q6, X) = (q5, X, R)
     delta(q6, Y) = (q5, Y, R)
-    delta(q6, _) = (q5, _, R)
+    delta(q6, ⊔) = (q5, ⊔, R)
 
 Cadena de entrada: w = 00101
 

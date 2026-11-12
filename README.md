@@ -64,8 +64,8 @@ python main.py entradas/ejemplo_M2_documento.txt
 # las líneas que empiezan con # son comentarios
 Q = {q1, q2, qaccept, qreject}
 Sigma = {0, 1}
-Gamma = {0, 1, X, _}
-Blanco = _
+Gamma = {0, 1, X, ⊔}
+Blanco = ⊔
 q0 = q1
 qaccept = qaccept
 qreject = qreject
@@ -78,7 +78,8 @@ w = 0011
 
 - Cada transición se escribe como δ(q, a) = (p, b, D), es decir `(q, a) = (p, b, D)`, con D igual a L o R.
 - Los símbolos de Γ son de un solo carácter.
-- `Blanco` indica qué símbolo de Γ es el blanco ⊔ (puede ser `_` o el mismo `⊔`).
+- `Blanco` indica qué símbolo de Γ es el blanco. Los ejemplos usan `⊔` como en clase, pero se puede usar otro, por ejemplo `_`.
+- El archivo debe estar guardado en UTF-8.
 - La cadena vacía se escribe `w = e` o `w =`.
 
 ## Verificaciones de la especificación
@@ -104,7 +105,7 @@ Configuraciones:
 C1 = q1000111
 C2 = Xq200111
 ...
-C26 = XXXYYY_qaccept_
+C26 = XXXYYY⊔qaccept⊔
 
 Resultado: C26 es una configuracion de aceptacion. M acepta w.
 ```
@@ -112,6 +113,8 @@ Resultado: C26 es una configuracion de aceptacion. M acepta w.
 Al inicio del archivo se repite la especificación de la máquina y la cadena de entrada.
 
 ## Máquina del inciso b
+
+![Diagrama](diagramas/maquina_inciso_b.png)
 
 - Acepta L = {0ⁿ1ⁿ | n ≥ 1}.
 - Rechaza las cadenas que empiezan con 0 y no son de la forma 0ⁿ1ⁿ.
@@ -132,3 +135,4 @@ Al inicio del archivo se repite la especificación de la máquina y la cadena de
 - `maquina.py`: la función δ y el paso de una configuración a la siguiente.
 - `entradas/`: archivos de entrada.
 - `salidas/`: configuraciones generadas.
+- `diagramas/`: diagrama de estados de la máquina del inciso b (`.png` y `.excalidraw`, se abre en excalidraw.com).

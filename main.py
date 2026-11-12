@@ -71,6 +71,12 @@ def simular(spec, salida, max_pasos):
 
 
 def main():
+    # para que la consola de Windows pueda mostrar simbolos como el blanco
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except AttributeError:
+        pass
+
     argumentos = sys.argv[1:]
     max_pasos = MAX_PASOS_DEFECTO
     if "--max-pasos" in argumentos:
